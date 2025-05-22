@@ -1,0 +1,194 @@
+.profile-container {
+    margin-left: 250px;
+    padding: 2rem;
+  }
+  
+  .profile-container h2 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+  }
+  
+  .profile-card {
+    display: flex;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    gap: 2rem;
+  }
+  
+  .profile-pic-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  #profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #3498db;
+  }
+  
+  #change-pic-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  #change-pic-btn:hover {
+    background-color: #2980b9;
+  }
+  
+  .profile-info {
+    flex: 1;
+  }
+  
+  .profile-info label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  .profile-info input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .profile-info input:disabled {
+    background-color: #f5f5f5;
+  }
+  
+  #save-changes {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-right: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  #save-changes:hover {
+    background-color: #27ae60;
+  }
+  
+  #change-password {
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  #change-password:hover {
+    background-color: #d35400;
+  }
+  
+  .password-form {
+    margin-top: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+  }
+  
+  .password-form h3 {
+    margin-top: 0;
+    color: #2c3e50;
+  }
+  
+  .password-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  .password-form input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .error {
+    color: #e74c3c;
+    margin-bottom: 1rem;
+  }
+  
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .form-actions button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .form-actions button:first-child {
+    background-color: #2ecc71;
+    color: white;
+  }
+  
+  .form-actions button:first-child:hover {
+    background-color: #27ae60;
+  }
+  
+  .form-actions button:last-child {
+    background-color: #95a5a6;
+    color: white;
+  }
+  
+  .form-actions button:last-child:hover {
+    background-color: #7f8c8d;
+  }
+  
+  /* Dark mode styles */
+  .dark-mode .profile-container h2,
+  .dark-mode .profile-card,
+  .dark-mode .password-form {
+    background-color: #34495e;
+    color: white;
+  }
+  
+  .dark-mode .profile-info label,
+  .dark-mode .password-form label,
+  .dark-mode .password-form h3 {
+    color: #bdc3c7;
+  }
+  
+  .dark-mode .profile-info input,
+  .dark-mode .password-form input {
+    background-color: #2c3e50;
+    color: white;
+    border-color: #4a6278;
+  }
+  
+  .dark-mode .profile-info input:disabled {
+    background-color: #3d5166;
+  }

@@ -1,0 +1,182 @@
+/* ARCHIVE ALBUMS */
+.bg-featured-album-color {
+    background-color: #EBEBE5;
+}
+
+.bg-album-outer-color {
+    background-color: #F4F4ED;
+}
+
+/* .intro-bg.album-banner-content {
+    background-image: url('https://www.moka.mu/wp-content/uploads/2024/04/2b132a1446376d21ef07e9ab9a408d5f-1.jpg')
+} */
+
+.featured-album-title h2 {
+    color: #1AAB89;
+}
+
+.filter-search input[type="text"]::placeholder {
+    color: rgba(0, 0, 0, 0.14);
+}
+
+span.filter-close {
+    color: #00000059;
+}
+
+.filter-search input[type="text"] {
+    border-bottom: 0.8px solid rgba(0, 0, 0, 0.14);
+    color: #00000059;
+}
+
+.filter-dropdown-wrapper .jcf-select {
+    max-width: 160px;
+    background-color: #1AAB89;
+    color: #ffffff;
+    min-width: unset;
+}
+
+button#filter-all {
+    background: white;
+    color: #1AAB89;
+    font-size: 14px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, .24);
+    border-radius: 60px;
+}
+
+.filter-search-btn {
+    color: rgba(0, 0, 0, 0.35);
+}
+
+.jcf-select .jcf-select-opener:after {
+    font-weight: light !important;
+}
+
+.album-title h2 {
+    color: #1AAB89;
+}
+
+.featured-event-tag {
+    background-color: #19AA89;
+}
+
+.featured-event-tag span {
+    color: white;
+}
+
+.featured-title h3 {
+    color: white;
+}
+
+.featured-title h3 {
+    font-size: 30px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.filter-search input[type="text"] {
+    border: unset;
+    background-color: unset;
+}
+
+span.filtered-text {
+    color: rgba(0, 0, 0, 0.35);
+}
+
+.album-item h4 {
+    color: white;
+    font-family: "GT Eesti Pro Display";
+}
+
+.single-album-title h2 {
+    color: #1AAB89;
+}
+
+.single-album-title h2 span {
+    color: rgba(0, 0, 0, 0.31);
+}
+
+
+button.copy-button {
+    background: #fff;
+    color: #162f29;
+    font-size: 14px;
+    border-radius: 60px;
+    border-style: solid;
+    border-color: #19AA89;
+    height: 40px;
+    padding: 0 20px;
+}
+
+button.copy-button:hover{
+    background-color: #19AA89;
+    color: white;
+    border-color: white;
+    transition: 0.3s ease-in-out;
+}
+
+.single-album-button {
+    background: #fff;
+    color: #19AA89;
+    font-size: 14px;
+    border-radius: 60px;
+    border-style: solid;
+    border-color: #19AA89;
+    height: 40px;
+    padding: 4px 20px;
+}
+
+.single-album-button a {
+    color: #19AA89;
+}
+
+.single-album-button:hover{
+    background-color: #19AA89;
+    color: white;
+    border-color: white;
+    transition: 0.3s ease-in-out;
+}
+
+
+.single-album-button a:hover {
+    color: white;
+}
+
+/* Loader - Filter */
+.blockUI.blockMsg.blockPage {
+    background: transparent !important;
+    border: none !important;
+    top: 50% !important;
+}
+
+i.fa-duotone.fa-loader.fa-spin {
+    z-index: 1000;
+    font-size: 45px;
+    --fa-primary-color: red !important;
+    --fa-secondary-color: red !important;
+}
+
+.img-wrapper img {
+   /* object-fit: contain; */
+    /* max-height: 500px; */
+    width: 100%;
+}
+
+#footer-enl-endorsement{
+    width: 180px;
+}
+
+.main-footer{
+    margin-top: 20px;
+}
+
+#bottom-footer-logo-row{
+    border-top: 1px solid rgba(0, 0, 0, 0);
+}
+
+
+.blog-home .dots-holder {
+    position: relative;
+}
+.blog-home .dots-holder ul.slick-dots {
+    top: 0;
+}

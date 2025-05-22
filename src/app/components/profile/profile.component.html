@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+
+<div class="profile-container">
+  <h2>User Profile</h2>
+  
+  <div class="profile-card">
+    <div class="profile-pic-container">
+      <img id="profile-pic" src="assets/profileImage.jpeg" alt="User Avatar">
+      <input type="file" id="upload-pic" hidden (change)="onFileSelected($event)">
+      <button id="change-pic-btn" (click)="document.getElementById('upload-pic').click()">Change Profile Picture</button>
+    </div>
+    
+    <div class="profile-info">
+      <form [formGroup]="profileForm" (ngSubmit)="onSaveProfile()">
+        <label>Username:</label>
+        <input type="text" formControlName="username">
+        
+        <label>Email:</label>
+        <input type="email" formControlName="email">
+        
+        <label>Role:</label>
+        <input type="text" [value]="currentUser?.role" disabled>
+        
+        <button type="submit" id="save-changes">Save Changes</button>
+      </form>
+      
+      <button id="change-password" (click)="onChangePassword()">Change Password</button>
+    </div>
+  </div>
+
+  <!-- Password Change Form -->
+  <div class="password-form" *ngIf="showPasswordForm">
+    <h3>Change Password</h3>
+    <form [formGroup]="passwordForm" (ngSubmit)="onSavePassword()">
+      <label>Current Password:</label>
+      <input type="password" formControlName="currentPassword" required>
+      
+      <label>New Password:</label>
+      <input type="password" formControlName="newPassword" required>
+      
+      <label>Confirm Password:</label>
+      <input type="password" formControlName="confirmPassword" required>
+      <div *ngIf="passwordForm.hasError('mismatch')" class="error">
+        Passwords do not match
+      </div>
+      
+      <div class="form-actions">
+        <button type="submit">Save Password</button>
+        <button type="button" (click)="onCancelPassword()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

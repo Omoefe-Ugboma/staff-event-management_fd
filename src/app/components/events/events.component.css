@@ -1,0 +1,220 @@
+.event-container {
+    margin-left: 250px;
+    padding: 2rem;
+  }
+  
+  #openEventForm {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  #openEventForm:hover {
+    background-color: #27ae60;
+  }
+  
+  .modal {
+    display: flex;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+  }
+  
+  .close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #7f8c8d;
+  }
+  
+  .modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .modal-content label {
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  .modal-content input,
+  .modal-content select,
+  .modal-content textarea {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 100%;
+  }
+  
+  .modal-content textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  .modal-content button[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .modal-content button[type="submit"]:hover {
+    background-color: #2980b9;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+  }
+  
+  th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ecf0f1;
+  }
+  
+  th {
+    background-color: #3498db;
+    color: white;
+  }
+  
+  tr:hover {
+    background-color: #f5f5f5;
+  }
+  
+  button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    font-size: 0.875rem;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    opacity: 0.9;
+  }
+  
+  button:first-of-type {
+    background-color: #f39c12;
+    color: white;
+  }
+  
+  button:last-of-type {
+    background-color: #e74c3c;
+    color: white;
+  }
+  
+  /* Dark mode styles */
+  .dark-mode .modal-content,
+  .dark-mode table,
+  .dark-mode th,
+  .dark-mode td {
+    background-color: #34495e;
+    color: white;
+  }
+  
+  .dark-mode tr:hover {
+    background-color: #4a6278;
+  }
+  
+  .dark-mode .modal-content label {
+    color: #bdc3c7;
+  }
+  
+  .dark-mode .modal-content input,
+  .dark-mode .modal-content select,
+  .dark-mode .modal-content textarea {
+    background-color: #2c3e50;
+    color: white;
+    border-color: #4a6278;
+  }
+
+  /* Add these to your existing CSS */
+.error-message {
+  color: #e74c3c;
+  background-color: #fde8e8;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  border-left: 4px solid #e74c3c;
+}
+
+.loading-indicator {
+  padding: 1rem;
+  text-align: center;
+  color: #7f8c8d;
+}
+
+.empty-state {
+  padding: 2rem;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  margin-top: 1rem;
+  color: #7f8c8d;
+}
+
+.status-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.status-badge.upcoming {
+  background-color: #f39c12;
+  color: white;
+}
+
+.status-badge.ongoing {
+  background-color: #3498db;
+  color: white;
+}
+
+.status-badge.completed {
+  background-color: #2ecc71;
+  color: white;
+}
+
+/* Dark mode styles */
+.dark-mode .empty-state {
+  background-color: #3d5166;
+  color: #bdc3c7;
+}
+
+.dark-mode .error-message {
+  background-color: #4a2a2a;
+  border-left-color: #e74c3c;
+}

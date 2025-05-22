@@ -1,0 +1,74 @@
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+
+<!-- Main Content -->
+<div class="main-content" [class.dark-mode]="isDarkMode">
+  <div class="topbar">
+    <h2>Welcome, {{ authService.getCurrentUser()?.username || 'User' }}</h2>
+    <div class="profile">
+      <button id="darkModeToggle" (click)="toggleDarkMode()">🌙</button>
+      <button id="refreshButton" (click)="refreshData()" [disabled]="isLoading">
+        <i class="fas fa-sync-alt" [class.fa-spin]="isLoading"></i>
+      </button>
+      <img src="assets/images/profile.jpg" alt="User Profile">
+      <span>{{ authService.getCurrentUser()?.role || 'User' }}</span>
+    </div>
+  </div>
+
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="alert alert-error">
+    {{ errorMessage }}
+    <button (click)="refreshData()">Retry</button>
+  </div>
+
+  <!-- Loading Indicator -->
+  <div *ngIf="isLoading" class="loading-container">
+    <div class="spinner"></div>
+    <p>Loading dashboard data...</p>
+  </div>
+
+  <!-- Dashboard Content -->
+  <div *ngIf="!isLoading && !errorMessage" class="dashboard-content">
+    <!-- Widgets -->
+    <div class="widgets-grid">
+      <div class="widget card">
+        <h3>Total Events</h3>
+        <div class="value">{{ totalEvents }}</div>
+      </div>
+      
+      <div class="widget card">
+        <h3>Active Staff</h3>
+        <div class="value">{{ activeStaff }}</div>
+      </div>
+      
+      <div class="widget card">
+        <h3>Pending Requests</h3>
+        <div class="value">{{ pendingRequests }}</div>
+      </div>
+      
+      <div class="widget card">
+        <h3>System Uptime</h3>
+        <div class="value">{{ systemUptime }}</div>
+      </div>
+    </div>
+
+    <!-- Chart Section -->
+    <div class="chart-section card">
+      <h3>Monthly Event Statistics</h3>
+      <div class="chart-container">
+        <div [chart]="chart"></div>
+      </div>
+    </div>
+
+    <!-- Recent Activities -->
+    <div class="activities-section card">
+      <h3>Recent Activities</h3>
+      <ul class="activities-list">
+        <li *ngFor="let activity of recentActivities" class="activity-item">
+          <i class="fas fa-circle activity-bullet"></i>
+          {{ activity }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,227 @@
+/* ----------------------------------
+MOBILE
+------------------------------------*/
+
+/*SMALL DOWN*/
+
+@media screen and (max-width: 800px) {
+
+    .intro.album-banner-wrapper.intro-xs {
+        min-height: 100%;
+    }
+
+    .featured-album-title {
+        padding-top: 40px;
+    }
+
+    .featured-item-wrapper .row .col-md-7 {
+        padding-right: 15px;
+    }
+
+    .featured-album-left-col {
+        margin-bottom: 12px;
+    }
+
+    .featured-image-wrapper.left-wrapper .featured-image img {
+        height: 248px;
+    }
+
+    .featured-album-wrapper {
+        margin-top: unset;
+    }
+
+    .featured-title {
+        position: absolute;
+        bottom: 25px;
+        left: 25px;
+    }
+
+    .filter-dropdown-wrapper {
+        margin-top: 10px;
+        flex-direction: column;
+    }
+
+    .archive-album-wrapper {
+        padding: 20px 0;
+    }
+
+    span.filtered-text {
+        margin-bottom: 10px;
+    }
+
+    .filter-dropdown-wrapper .jcf-select {
+        max-width: 100%;
+        margin-bottom: 10px;
+    }
+
+    button#filter-all {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .filter-search-btn {
+        display: none;
+    }
+
+    .filter-search-btn.mobile {
+        font-size: 24px;
+    }
+
+    .archive-album-content-wrapper,
+    .single-album-content-wrapper {
+        margin-top: 40px;
+    }
+
+    .archive-album-content {
+        columns: 1;
+    }
+
+    .album-item h4 {
+        left: 10px;
+    }
+
+    .album-item.grid-item:nth-child(odd) img {
+        height: 100%;
+    }
+
+    .single-album-item.target-album-item.album-item.grid-item:last-child,
+    .single-album-item.target-album-item.album-item.grid-item:nth-child(3n) {
+        margin-bottom: 20px;
+    }
+
+    .mobile-load-more {
+        text-align: center;
+    }
+
+    button.mobile-load-more-btn {
+        border-radius: 60px;
+        height: 40px;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, .24);
+        background: #1AAB89;
+        padding: 0 20px;
+        border-color: unset;
+        border: unset;
+        color: white;
+        font-size: 14px;
+    }
+
+    .single-album-content {
+        display: block;
+    }
+
+    .single-album-content {
+        height: unset;
+    }
+}
+
+/* ----------------------------------
+
+/*MEDIUM ONLY*/
+
+@media screen and (min-width: 761px) and (max-width: 1070px) {}
+
+
+/* ----------------------------------
+
+/*MEDIUM UP*/
+
+@media screen and (min-width: 1071px) and (max-width: 1169px) {}
+
+/* ----------------------------------
+
+
+
+/* ----------------------------------
+TABLET
+------------------------------------*/
+
+/*BOTH DIRECTION*/
+@media only screen and (min-width: 769px) and (max-width: 1281px) {
+    .filter-dropdown-wrapper {
+        margin-top: 10px;
+        flex-direction: column;
+    }
+
+    .archive-album-wrapper {
+        padding: 20px 0;
+    }
+
+    span.filtered-text {
+        margin-bottom: 10px;
+    }
+
+    .filter-dropdown-wrapper .jcf-select {
+        max-width: 100%;
+        margin-bottom: 10px;
+    }
+
+    button#filter-all {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .filter-search-btn {
+        display: none;
+    }
+
+    .filter-search-btn.mobile {
+        font-size: 24px;
+    }
+
+    .archive-album-content-wrapper,
+    .single-album-content-wrapper {
+        margin-top: 40px;
+    }
+
+    .archive-album-content {
+        columns: 1;
+    }
+
+    .album-item h4 {
+        left: 5px;
+    }
+
+    .album-item.grid-item:nth-child(odd) img {
+        height: 100%;
+    }
+
+    .single-album-item.target-album-item.album-item.grid-item:last-child,
+    .single-album-item.target-album-item.album-item.grid-item:nth-child(3n) {
+        margin-bottom: 20px;
+    }
+
+    .mobile-load-more {
+        text-align: center;
+    }
+
+    button.mobile-load-more-btn {
+        border-radius: 60px;
+        height: 40px;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, .24);
+        background: #1AAB89;
+        padding: 0 20px;
+        border-color: unset;
+        border: unset;
+        color: white;
+        font-size: 14px;
+    }
+
+    .single-album-content {
+        display: block;
+    }
+
+    .single-album-content {
+        height: unset;
+    }
+}
+
+
+/* ----------------------------------
+
+
+/*PORTRAIT ONLY*/
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {}
+
+
+/*LANDSCAPE ONLY*/
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {}

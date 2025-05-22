@@ -1,0 +1,91 @@
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+
+<!-- Event Management Section -->
+<section class="event-container">
+  <h2>Manage Events</h2>
+  
+  <!-- Error Message -->
+  <div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+  
+  <!-- Loading Indicator -->
+  <div class="loading-indicator" *ngIf="isLoading">
+    Loading events...
+  </div>
+  
+  <!-- Add New Event Button -->
+  <button id="openEventForm" (click)="openEventForm()" [disabled]="isLoading">
+    + Add Event
+  </button>
+
+  <!-- Event Form Modal -->
+  <div id="eventForm" class="modal" *ngIf="showEventForm">
+    <div class="modal-content">
+      <span class="close" (click)="closeEventForm()">&times;</span>
+      <h3>{{ isEditing ? 'Edit' : 'Create' }} Event</h3>
+      
+      <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+        <label>Event Name:</label>
+        <input type="text" formControlName="title" required>
+        
+        <label>Description:</label>
+        <textarea formControlName="description"></textarea>
+        
+        <label>Date:</label>
+        <input type="datetime-local" formControlName="event_date" required>
+        
+        <label>Location:</label>
+        <input type="text" formControlName="location">
+        
+        <label>Status:</label>
+        <select formControlName="status">
+          <option value="Upcoming">Upcoming</option>
+          <option value="Ongoing">Ongoing</option>
+          <option value="Completed">Completed</option>
+        </select>
+
+        <button type="submit" [disabled]="eventForm.invalid || isLoading">
+          {{ isEditing ? 'Update' : 'Create' }} Event
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Event Table -->
+  <table *ngIf="!isLoading && filteredEvents.length > 0">
+    <thead>
+      <tr>
+        <th>Event Name</th>
+        <th>Date</th>
+        <th>Location</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let event of filteredEvents">
+        <td>{{ event.title }}</td>
+        <td>{{ event.event_date | date:'medium' }}</td>
+        <td>{{ event.location || '-' }}</td>
+        <td>
+          <span class="status-badge" [class.upcoming]="event.status === 'Upcoming'"
+                                [class.ongoing]="event.status === 'Ongoing'"
+                                [class.completed]="event.status === 'Completed'">
+            {{ event.status }}
+          </span>
+        </td>
+        <td>
+          <button (click)="openEventForm(event)" [disabled]="isLoading">Edit</button>
+          <button (click)="deleteEvent(event.id)" [disabled]="isLoading">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Empty State -->
+  <div class="empty-state" *ngIf="!isLoading && filteredEvents.length === 0">
+    No events found. Create your first event!
+  </div>
+</section>

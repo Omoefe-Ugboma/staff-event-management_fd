@@ -1,0 +1,11 @@
+<!-- navbar.component.html -->
+<nav class="navbar">
+  <div class="logo">Staff & Event Management</div>
+  <ul>
+    <li><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
+    <li><a routerLink="/events" routerLinkActive="active">Event Management</a></li>
+    <li><a routerLink="/staff" routerLinkActive="active">Staff Management</a></li>
+    <li><a routerLink="/profile" routerLinkActive="active">Profile</a></li>
+    <li><a (click)="this['handleLogout']()">Logout</a></li>
+  </ul>
+</nav>

@@ -1,0 +1,96 @@
+/* PREPROD */
+
+/* =WordPress Core
+-------------------------------------------------------------- */
+
+.contact-form-wrapper .wpcf7-form .wpcf7-response-output {
+    display: none !important;
+}
+
+#main .masterplan-section {
+    height: auto;
+}
+
+.line-box .line-wrap .data-item {
+    margin-right: 50px;
+}
+
+.subscribe-form .mc4wp-form-fields {
+    flex-wrap: wrap;
+}
+.subscribe-form .mc4wp-form-fields .input-holder:first-child {
+    width: 100%;
+}
+.subscribe-form .mc4wp-form-fields .input-holder:not(:first-child) {
+    flex: 1;
+}
+
+@media (min-width: 375px) {
+    .metric-value {
+        font-size: 37px;
+    }
+}
+@media (min-width: 768px) {
+    .subscribe-form input[type="text"] {
+        height: 53px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+}
+@media (min-width: 1024px) {
+    .metric-value {
+        font-size: 42px;
+    }
+}
+@media (min-width: 1366px) {
+    .subscribe-form input[type="text"] {
+        /* min-width: 254px; */
+    }
+}
+@media (min-width: 1600px) {
+    .subscribe-form input[type="text"] {
+        height: 60px;
+    }
+    .metric-value {
+        font-size: 48px;
+    }
+}
+@media (min-width: 1920px) {
+    .subscribe-form input[type="text"] {
+        /* min-width: 360px; */
+        height: 60px;
+    }
+    .metric-value {
+        font-size: 52px;
+    }
+}
+
+/* BUTTONS */
+
+.btn-dark {
+	color: #f4f4ed;
+	fill: #f4f4ed;
+}
+
+.btn-dark:before {
+	background-color: #1aab89;
+}
+
+.btn-dark.hover-scale:hover {
+	color: #f4f4ed;
+	fill: #f4f4ed;
+}
+
+.btn-dark.hover-scale:hover:before {
+	background-color: #1aab89;
+}
+
+.btn-dark:hover,
+.active .btn-dark {
+	color: #1aab89;
+}
+
+.btn-dark:hover:before,
+.active .btn-dark:before {
+	background-color: #f4f4ed;
+}

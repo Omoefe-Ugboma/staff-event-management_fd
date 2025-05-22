@@ -8,6 +8,10 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
+  "styles": [
+    "src/styles.css",
+    "node_modules/font-awesome/css/font-awesome.css"
+  ],
   "private": true,
   "dependencies": {
     "@angular/animations": "^19.2.9",
@@ -20,8 +24,14 @@
     "@angular/platform-browser": "^19.2.0",
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
+    "@fortawesome/angular-fontawesome": "^1.0.0",
+    "@fortawesome/fontawesome-free": "^6.7.2",
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@types/chart.js": "^2.9.41",
+    "angular-highcharts": "^17.0.1",
     "chart.js": "^4.4.9",
-    "font-awesome": "^4.7.0",
+    "highcharts": "^12.2.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
@@ -30,6 +40,7 @@
     "@angular-devkit/build-angular": "^19.2.10",
     "@angular/cli": "^19.2.10",
     "@angular/compiler-cli": "^19.2.0",
+    "@types/highcharts": "^7.0.0",
     "@types/jasmine": "~5.1.0",
     "jasmine-core": "~5.6.0",
     "karma": "~6.4.0",
@@ -38,5 +49,9 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.7.2"
+  },
+  "compilerOptions": {
+    "strictTemplates": false,
+    "strictPropertyInitialization": false
   }
 }

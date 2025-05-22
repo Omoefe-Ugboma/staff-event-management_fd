@@ -1,0 +1,109 @@
+/* Apply styles to the host element (login component) */
+:host {
+  display: block;
+  height: 100vh;
+  background: url('../../../../assets/images/inner-banner.jpg') no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.login-container {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 300px;
+}
+
+.login-container h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background: #0056b3;
+}
+
+.login-btn:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.error-msg {
+  color: #e74c3c;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.register-link {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #555;
+}
+
+.register-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+/* Add to your login.component.css */
+:host-context(.dark-mode) .login-container {
+  background: rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+}
+
+:host-context(.dark-mode) .login-container h2,
+:host-context(.dark-mode) .input-group label {
+  color: #ffffff;
+}
+
+:host-context(.dark-mode) .input-group input {
+  background-color: #333;
+  color: #fff;
+  border-color: #555;
+}

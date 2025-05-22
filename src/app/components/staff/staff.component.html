@@ -1,0 +1,71 @@
+<app-sidebar></app-sidebar>
+<app-navbar></app-navbar>
+<div class="container">
+  <h1>Staff Management</h1>
+
+  <!-- Search Bar with template reference variable -->
+  <input #searchInput type="text" id="searchStaff" placeholder="Search Staff..." 
+         (input)="filterStaff(searchInput.value)">
+
+  <!-- Staff List Table -->
+  <table id="staffTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Department</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let staff of filteredStaff">
+        <td>{{ staff.name }}</td>
+        <td>{{ staff.email }}</td>
+        <td>{{ staff.department }}</td>
+        <td>{{ staff.role }}</td>
+        <td>
+          <button (click)="openStaffForm(staff)">Edit</button>
+          <button (click)="deleteStaff(staff.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Empty state -->
+  <div *ngIf="filteredStaff.length === 0" class="no-results">
+    No staff members found
+  </div>
+
+  <!-- Add/Edit Staff Form -->
+  <button (click)="openStaffForm()">+ Add Staff</button>
+  <div id="staffFormContainer" class="modal" *ngIf="showStaffForm">
+    <form [formGroup]="staffForm" (ngSubmit)="onSubmit()">
+      <h2>{{ isEditing ? 'Edit' : 'Add' }} Staff</h2>
+      
+      <label>Name:</label>
+      <input type="text" formControlName="name" required>
+      
+      <label>Email:</label>
+      <input type="email" formControlName="email" required>
+      
+      <label>Department:</label>
+      <input type="text" formControlName="department" required>
+      
+      <label>Role:</label>
+      <select formControlName="role">
+        <option value="Admin">Admin</option>
+        <option value="Manager">Manager</option>
+        <option value="Employee">Employee</option>
+      </select>
+      
+      <label>Hire Date:</label>
+      <input type="date" formControlName="hireDate" required>
+      
+      <div class="form-actions">
+        <button type="submit" [disabled]="staffForm.invalid">Save</button>
+        <button type="button" (click)="closeStaffForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

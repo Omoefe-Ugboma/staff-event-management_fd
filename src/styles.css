@@ -1,1 +1,61 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global Styles */
+@import '@fortawesome/fontawesome-free/css/all.css';
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0.1)), 
+              url('./assets/images/inner-banner.jpg') no-repeat center center fixed;
+  margin: 0;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+} */
+
+* {
+  box-sizing: border-box;
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+  /* background-color: #2c3e50; */
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #007BFF;
+}
+
+.dark-mode .widget,
+.dark-mode .chart-container,
+.dark-mode .recent-activities,
+.dark-mode .modal-content,
+.dark-mode table,
+.dark-mode th,
+.dark-mode td,
+.dark-mode .profile-card,
+.dark-mode .password-form {
+  background-color: #34495e;
+  color: white;
+}
+
+.dark-mode h1, 
+.dark-mode h2, 
+.dark-mode h3,
+.dark-mode label {
+  color: #bdc3c7;
+}
+
+.dark-mode input,
+.dark-mode select,
+.dark-mode textarea {
+  background-color: #2c3e50;
+  color: white;
+  border-color: #4a6278;
+}
