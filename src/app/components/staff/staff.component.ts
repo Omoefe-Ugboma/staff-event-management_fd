@@ -10,38 +10,60 @@ import { CommonModule } from '@angular/common';
   selector: 'app-staff',
   templateUrl: './staff.component.html',
   styleUrls: ['./staff.component.css'],
-  imports: [NavbarComponent, SidebarComponent, CommonModule,
-    ReactiveFormsModule]
+  standalone: true,
+  imports: [NavbarComponent, SidebarComponent, CommonModule, ReactiveFormsModule]
 })
 export class StaffComponent implements OnInit {
   staffList: Staff[] = [];
   filteredStaff: Staff[] = [];
-  showStaffForm = false;
+  showForm = false;
   staffForm: FormGroup;
   isEditing = false;
   currentStaffId: string | null = null;
+  isLoading = false;
+  errorMessage = '';
+  successMessage = '';
+
 
   constructor(
     private staffService: StaffService,
     private fb: FormBuilder
   ) {
     this.staffForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      department: ['', Validators.required],
-      role: ['Employee', Validators.required],
-      hireDate: ['', Validators.required]
+       department: ['', [Validators.required, Validators.minLength(2)]],
+      position: ['', [Validators.required, Validators.minLength(2)]],
+      hire_date: ['', Validators.required],
+      status: ['Active', Validators.required]
     });
   }
 
   ngOnInit(): void {
-    this.loadStaff();
+     this.loadStaff();
+    this.listenToFormChanges(); // Add this for debugging
+  }
+
+  listenToFormChanges(): void {
+    this.staffForm.valueChanges.subscribe(values => {
+      console.log('Form values:', values);
+      console.log('Form valid:', this.staffForm.valid);
+      console.log('Form errors:', this.staffForm.errors);
+      console.log('Department errors:', this.staffForm.get('department')?.errors);
+      console.log('Position errors:', this.staffForm.get('position')?.errors);
+      console.log('Hire date errors:', this.staffForm.get('hire_date')?.errors);
+    });
   }
 
   loadStaff(): void {
-    this.staffService.getStaff().subscribe(staff => {
-      this.staffList = staff;
-      this.filteredStaff = [...staff];
+    this.isLoading = true;
+    this.staffService.getStaff().subscribe({
+      next: (staff) => {
+        this.staffList = staff;
+        this.filteredStaff = [...staff];
+        this.isLoading = false;
+      },
+      error: (err) => {
+        this.handleError('Failed to load staff', err);
+      }
     });
   }
 
@@ -52,57 +74,98 @@ export class StaffComponent implements OnInit {
     }
 
     const term = searchTerm.toLowerCase();
-    this.filteredStaff = this.staffList.filter(staff => 
-      staff.name.toLowerCase().includes(term) || 
-      staff.email.toLowerCase().includes(term) ||
-      staff.department.toLowerCase().includes(term)
-    );
+    this.filteredStaff = this.staffList.filter(staff => {
+      return (
+        (staff.username?.toLowerCase().includes(term)) ||
+        (staff.position?.toLowerCase().includes(term)) ||
+        (staff.department?.toLowerCase().includes(term))
+      );
+    });
   }
 
-  openStaffForm(staff?: Staff): void {
-    this.showStaffForm = true;
+openForm(staff?: Staff): void {
+    this.showForm = true;
     if (staff) {
       this.isEditing = true;
       this.currentStaffId = staff.id;
       this.staffForm.patchValue({
-        name: staff.name,
-        email: staff.email,
         department: staff.department,
-        role: staff.role,
-        hireDate: this.formatDateForInput(staff.hireDate)
+        position: staff.position,
+        hire_date: this.formatDateForInput(staff.hire_date),
+        status: staff.status
       });
     } else {
       this.isEditing = false;
       this.currentStaffId = null;
       this.staffForm.reset({
-        role: 'Employee'
+        status: 'Active'
       });
     }
   }
 
-  onSubmit(): void {
+   onSubmit(): void {
+    console.log('Submit clicked'); // Debug log
     if (this.staffForm.valid) {
-      const staffData = this.staffForm.value;
-      if (this.isEditing && this.currentStaffId) {
-        this.staffService.updateStaff(this.currentStaffId, staffData)
-          .subscribe(() => this.loadStaff());
-      } else {
-        this.staffService.createStaff(staffData)
-          .subscribe(() => this.loadStaff());
-      }
-      this.closeStaffForm();
+      this.isLoading = true;
+      const formData = {
+        ...this.staffForm.value,
+        hire_date: new Date(this.staffForm.value.hire_date).toISOString().split('T')[0]
+      };
+
+      console.log('Submitting:', formData); // Debug log
+
+      const observable = this.isEditing && this.currentStaffId
+        ? this.staffService.updateStaff(this.currentStaffId, formData)
+        : this.staffService.createStaff(formData);
+
+      observable.subscribe({
+        next: () => {
+          this.showSuccess(this.isEditing ? 'Staff updated successfully' : 'Staff created successfully');
+          this.loadStaff();
+          this.closeForm();
+        },
+        error: (err) => {
+          this.handleError(this.isEditing ? 'Failed to update staff' : 'Failed to create staff', err);
+          console.error('Error details:', err); // Debug log
+        }
+      });
+    } else {
+      console.log('Form invalid, errors:', this.staffForm.errors); // Debug log
+      this.errorMessage = 'Please fill all required fields correctly';
+      setTimeout(() => this.errorMessage = '', 3000);
     }
   }
 
   deleteStaff(id: string): void {
-    if (confirm('Are you sure you want to delete this staff member?')) {
-      this.staffService.deleteStaff(id)
-        .subscribe(() => this.loadStaff());
+    if (confirm('Are you sure you want to delete this staff record?')) {
+      this.isLoading = true;
+      this.staffService.deleteStaff(id).subscribe({
+        next: () => {
+          this.loadStaff();
+          this.showSuccess('Staff deleted successfully');
+        },
+        error: (err) => {
+          this.handleError('Failed to delete staff', err);
+        }
+      });
     }
   }
 
-  closeStaffForm(): void {
-    this.showStaffForm = false;
+  private showSuccess(message: string): void {
+    this.successMessage = message;
+    setTimeout(() => this.successMessage = '', 3000);
+    this.isLoading = false;
+  }
+
+  private handleError(message: string, error: any): void {
+    this.errorMessage = message;
+    console.error(error);
+    setTimeout(() => this.errorMessage = '', 5000);
+    this.isLoading = false;
+  }
+
+  closeForm(): void {
+    this.showForm = false;
     this.staffForm.reset();
   }
 

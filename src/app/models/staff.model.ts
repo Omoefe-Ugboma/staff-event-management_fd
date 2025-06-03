@@ -1,10 +1,10 @@
 // models/staff.model.ts
 export interface Staff {
   id: string;
-  name: string;
-  email: string; // Make sure email is required
+  user_id: string;
+  username: string;
   department: string;
-  role: 'Admin' | 'Manager' | 'Employee';
-  hireDate: Date;
-  attendance?: number; // Optional property
+  position: string;
+  hire_date: string | Date;
+  status: 'Active' | 'Inactive' | 'On Leave';
 }

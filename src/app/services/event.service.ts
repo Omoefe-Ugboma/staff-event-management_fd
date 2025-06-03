@@ -52,24 +52,61 @@ export class EventService {
       );
   }
 
-  createEvent(eventData: Omit<Event, 'id'>): Observable<Event> {
-    return this.http.post<{event: Event}>(this.apiUrl, eventData, { headers: this.getHeaders() })
-      .pipe(
-        map(response => this.transformEvent(response.event))
-      );
-  }
+  // createEvent(eventData: Omit<Event, 'id'>): Observable<Event> {
+  //   return this.http.post<{event: Event}>(this.apiUrl, eventData, { headers: this.getHeaders() })
+  //     .pipe(
+  //       map(response => this.transformEvent(response.event))
+  //     );
+  // }
+
+createEvent(eventData: Omit<Event, 'id'>): Observable<Event> {
+    const dataToSend = {
+        ...eventData,
+        event_date: eventData.event_date instanceof Date 
+            ? eventData.event_date.toISOString()
+            : eventData.event_date
+    };
+    
+    return this.http.post<{event: Event}>(this.apiUrl, dataToSend, { headers: this.getHeaders() })
+        .pipe(
+            map(response => this.transformEvent(response.event))
+        );
+}
+
+  // updateEvent(id: string, eventData: Partial<Event>): Observable<Event> {
+  //   return this.http.put<{event: Event}>(`${this.apiUrl}/${id}`, eventData, { headers: this.getHeaders() })
+  //     .pipe(
+  //       map(response => this.transformEvent(response.event))
+  //     );
+  // }
+
+  // deleteEvent(id: string): Observable<void> {
+  //   return this.http.delete<void>(`${this.apiUrl}/${id}`, { headers: this.getHeaders() });
+  // }
 
   updateEvent(id: string, eventData: Partial<Event>): Observable<Event> {
-    return this.http.put<{event: Event}>(`${this.apiUrl}/${id}`, eventData, { headers: this.getHeaders() })
-      .pipe(
+    const dataToSend = {
+        ...eventData,
+        event_date: eventData.event_date instanceof Date 
+            ? eventData.event_date.toISOString()
+            : eventData.event_date
+    };
+    
+    return this.http.put<{event: Event}>(
+        `${this.apiUrl}/${id}`, 
+        dataToSend, 
+        { headers: this.getHeaders() }
+    ).pipe(
         map(response => this.transformEvent(response.event))
-      );
-  }
+    );
+}
 
-  deleteEvent(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`, { headers: this.getHeaders() });
-  }
-
+deleteEvent(id: string): Observable<void> {
+    return this.http.delete<void>(
+        `${this.apiUrl}/${id}`, 
+        { headers: this.getHeaders() }
+    );
+}
   private transformEvent(event: any): Event {
     return {
       ...event,

@@ -7,6 +7,51 @@
   <input #searchInput type="text" id="searchStaff" placeholder="Search Staff..." 
          (input)="filterStaff(searchInput.value)">
 
+<!-- Editing -->
+
+  <!-- Add Staff Button -->
+  <button (click)="openForm()">+ Add Staff</button>
+
+  <!-- Staff Form -->
+  <div *ngIf="showForm" class="modal">
+    <form [formGroup]="staffForm" (ngSubmit)="onSubmit()">
+      <h2>{{ isEditing ? 'Edit' : 'Add' }} Staff</h2>
+      
+      <label>Department:</label>
+      <input type="text" formControlName="department" required>
+      <div *ngIf="staffForm.get('department')?.invalid && staffForm.get('department')?.touched" 
+           class="error-text">
+        Department is required (min 2 characters)
+      </div>
+      
+      <label>Position:</label>
+      <input type="text" formControlName="position" required>
+      <div *ngIf="staffForm.get('position')?.invalid && staffForm.get('position')?.touched" 
+           class="error-text">
+        Position is required (min 2 characters)
+      </div>
+      
+      <label>Hire Date:</label>
+      <input type="date" formControlName="hire_date" required>
+      <div *ngIf="staffForm.get('hire_date')?.invalid && staffForm.get('hire_date')?.touched" 
+           class="error-text">
+        Hire date is required
+      </div>
+      
+      <label>Status:</label>
+      <select formControlName="status">
+        <option value="Active">Active</option>
+        <option value="Inactive">Inactive</option>
+        <option value="On Leave">On Leave</option>
+      </select>
+      
+      <button type="submit" [disabled]="staffForm.invalid || isLoading">
+        {{ isEditing ? 'Update' : 'Create' }}
+      </button>
+      <button type="button" (click)="closeForm()">Cancel</button>
+    </form>
+  </div>
+
   <!-- Staff List Table -->
   <table id="staffTable">
     <thead>
@@ -20,12 +65,12 @@
     </thead>
     <tbody>
       <tr *ngFor="let staff of filteredStaff">
-        <td>{{ staff.name }}</td>
-        <td>{{ staff.email }}</td>
+        <td>{{ staff.username }}</td>
+        <td>{{ staff.position }}</td>
         <td>{{ staff.department }}</td>
-        <td>{{ staff.role }}</td>
+        <td>{{ staff.status }}</td>
         <td>
-          <button (click)="openStaffForm(staff)">Edit</button>
+          <button (click)="openForm(staff)">Edit</button>
           <button (click)="deleteStaff(staff.id)">Delete</button>
         </td>
       </tr>
@@ -38,34 +83,5 @@
   </div>
 
   <!-- Add/Edit Staff Form -->
-  <button (click)="openStaffForm()">+ Add Staff</button>
-  <div id="staffFormContainer" class="modal" *ngIf="showStaffForm">
-    <form [formGroup]="staffForm" (ngSubmit)="onSubmit()">
-      <h2>{{ isEditing ? 'Edit' : 'Add' }} Staff</h2>
-      
-      <label>Name:</label>
-      <input type="text" formControlName="name" required>
-      
-      <label>Email:</label>
-      <input type="email" formControlName="email" required>
-      
-      <label>Department:</label>
-      <input type="text" formControlName="department" required>
-      
-      <label>Role:</label>
-      <select formControlName="role">
-        <option value="Admin">Admin</option>
-        <option value="Manager">Manager</option>
-        <option value="Employee">Employee</option>
-      </select>
-      
-      <label>Hire Date:</label>
-      <input type="date" formControlName="hireDate" required>
-      
-      <div class="form-actions">
-        <button type="submit" [disabled]="staffForm.invalid">Save</button>
-        <button type="button" (click)="closeStaffForm()">Cancel</button>
-      </div>
-    </form>
-  </div>
+
 </div>

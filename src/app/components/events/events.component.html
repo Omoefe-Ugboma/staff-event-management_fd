@@ -19,7 +19,9 @@
   <button id="openEventForm" (click)="openEventForm()" [disabled]="isLoading">
     + Add Event
   </button>
-
+   <div class="success-message" *ngIf="successMessage">
+    {{ successMessage }}
+   </div>
   <!-- Event Form Modal -->
   <div id="eventForm" class="modal" *ngIf="showEventForm">
     <div class="modal-content">

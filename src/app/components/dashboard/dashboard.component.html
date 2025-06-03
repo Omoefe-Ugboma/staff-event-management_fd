@@ -10,7 +10,7 @@
       <button id="refreshButton" (click)="refreshData()" [disabled]="isLoading">
         <i class="fas fa-sync-alt" [class.fa-spin]="isLoading"></i>
       </button>
-      <img src="assets/images/profile.jpg" alt="User Profile">
+      <img src="../../../assets/images/profileImage.jpeg" alt="User Profile">
       <span>{{ authService.getCurrentUser()?.role || 'User' }}</span>
     </div>
   </div>
